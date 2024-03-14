@@ -4,7 +4,7 @@
             <div class="form-group">
                 <label for="name" class="control-label required">{{ __('roles.name') }}</label>
                 <input type="text" name="name" value="{{ $role->name }}"  class="form-control" id="name"
-                    placeholder=" {{ __('roles.name') }}" autocomplete="off" />
+                    placeholder=" {{ __('roles.name') }}" autocomplete="off" autofocus="true" />
             </div>
         </div>
     </div>
