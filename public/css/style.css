@@ -1,0 +1,100 @@
+.card-title {
+    float: left;
+    font-size: 1.6rem;
+    font-weight: 400;
+    margin: 0;
+}
+/* width */
+.w_20 {
+    width: 20px;
+}
+.w_30 {
+    width: 30px;
+}
+.w_50 {
+    width: 50px;
+}
+.w_60 {
+    width: 60px;
+}
+.w_70 {
+    width: 70px;
+}
+.w_80 {
+    width: 80px;
+}
+.w_90 {
+    width: 90px;
+}
+.w_100 {
+    width: 100px;
+}
+.w_120 {
+    width: 120px;
+}
+.w_130 {
+    width: 130px !important;
+}
+.w_140 {
+    width: 140px;
+}
+.w_150 {
+    width: 150px;
+}
+.w_160 {
+    width: 160px;
+}
+.w_170 {
+    width: 170px;
+}
+.w_180 {
+    width: 180px;
+}
+.w_200 {
+    width: 200px;
+}
+.w_220 {
+    width: 220px;
+}
+.w_250 {
+    width: 250px;
+}
+.w_270 {
+    width: 270px;
+}
+.w_280 {
+    width: 280px;
+}
+.w_290 {
+    width: 290px;
+}
+.w_300 {
+    width: 300px !important;
+}
+.w_320 {
+    width: 320px !important;
+}
+
+.w_350 {
+    width: 350px !important;
+}
+.w_400 {
+    width: 400px !important;
+}
+
+label.required:after {
+    content: "(*)";
+    color: red;
+    margin-left: 5px ;
+}
+.user-form-image{
+    margin-bottom: 15px ;
+}
+
+.mt2{
+    margin-top: -20px;
+}
+
+.footer-table{
+    margin-top: 20px
+}
