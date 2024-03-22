@@ -181,7 +181,7 @@ class RolesController extends Controller
         $request = [
             'is_visible' => $is_visible,
         ];
-        $this->rolesRepository->update(collect($request),  $id);
+        $this->rolesRepository->active(collect($request),  $id);
         return response()->json(["code" => Response::HTTP_OK, "message" => __('roles.status_successfully')]);
     }
 }

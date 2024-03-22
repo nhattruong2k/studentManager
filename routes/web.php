@@ -41,7 +41,19 @@ Route::group(array('prefix' => '/admin', 'namespace' => 'Admin', 'middleware' =>
         Route::post('/store', [UsersController::class, 'store'])->name('users.store');
         Route::get('/edit/{id}', [UsersController::class, 'edit'])->name(User::UPDATE)->middleware('can:' . User::UPDATE);
         Route::post('/update/{id}', [UsersController::class, 'update'])->name('users.update');
-        Route::get('/destroy', [UsersController::class, 'destroy'])->name(User::DELETE)->middleware('can:' . User::DELETE);
+        Route::post('/active', [UsersController::class, 'active'])->name('users-active');
+        Route::post('/destroy', [UsersController::class, 'destroy'])->name(User::DELETE)->middleware('can:' . User::DELETE);
+        Route::get('/profile', [UsersController::class, 'profile'])->name('profile');
+        Route::post('/profile', [UsersController::class, 'updateProfile'])->name('updateProfile');
+        Route::get('/change-password', [UsersController::class, 'changePassword'])->name('changePassword')->middleware('can:'. User::UPDATE);
+        Route::post('/change-password', [UsersController::class, 'saveChangePassword'])->name('saveChangePassword');
+        Route::get('/change-password/{id}', [UsersController::class, 'userChangePass'])->name('user.change_pass');
+        Route::post('/change-password/{id}', [UsersController::class, 'saveUserChangePass'])->name('users.save_change_pass');
+        Route::get('/permission/{id}', [UsersController::class, 'permission'])->name('userPermission');
+        Route::post('/save-permission/{id}', [UsersController::class, 'savePermission'])->name('users.save_permission');
+        Route::post('/name-exists', [UsersController::class, 'nameExists'])->name('name_exists');
+        Route::post('/email-exists', [UsersController::class, 'emailExists'])->name('email_exists');
+
     });
     /*--------------------------------------------------------------------*/
     /* Role

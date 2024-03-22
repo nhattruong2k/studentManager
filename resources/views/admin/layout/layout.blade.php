@@ -21,6 +21,10 @@
     <link rel="stylesheet"
         href="{{ asset('admin/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css') }}">
     <!-- iCheck -->
+
+    <link rel="stylesheet" href="{{ asset('admin/plugins/select2/css/select2.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('admin/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css') }}">
+
     <link rel="stylesheet" href="{{ asset('admin/plugins/icheck-bootstrap/icheck-bootstrap.min.css') }}">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
@@ -41,16 +45,11 @@
     <link href="{{ asset('admin/toastr/build/toastrall.min.css') }}" rel="stylesheet" /> --}}
 
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-
-    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
-
     @notifyCss
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
-    <x-notify::notify />
     <div class="wrapper">
-
         <!-- Navbar -->
         <nav class="main-header navbar navbar-expand navbar-white navbar-light">
             @include('admin.layout.partials.header')
@@ -98,6 +97,7 @@
         </aside>
         <!-- /.control-sidebar -->
     </div>
+    <x-notify::notify />
     <!-- ./wrapper -->
     @notifyJs
     <script src="{{ asset('admin/plugins/jquery/jquery.min.js') }}"></script>
@@ -105,6 +105,8 @@
 
     <script src="{{ asset('admin/js/main.js') }}"></script>
     <script src="{{ asset('admin/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+
+    <script src="{{ asset('admin/plugins/select2/js/select2.full.min.js') }}"></script>
 
     <script src="{{ asset('admin/plugins/jquery-validation/jquery.validate.min.js') }}"></script>
 

@@ -11,7 +11,7 @@
             <li class="breadcrumb-item active">
                 <a href="{{ route(\App\Models\User::LIST) }}">{{ __('users.list') }}</a>
             </li>
-            <li class="breadcrumb-item active">{{ __('users.edit') }}</li>
+            <li class="breadcrumb-item active">{{ __('users.permission') }}</li>
         </ol>
     </div>
 @stop
@@ -24,9 +24,9 @@
             <h3 class="card-title">{{ $title }}</h3>
         </div>
         <div class="card-body">
-            <form method="POST" action="{{ route('users.update', $user->id) }}" id="form-user" enctype="multipart/form-data">
+            <form method="POST" action="{{ route('users.save_permission', $user->id) }}" id="form-user" enctype="multipart/form-data">
                 @csrf
-                @include('admin.users._form')
+                @include('admin.users._form_permission')
             </form>
         </div>
     </div>

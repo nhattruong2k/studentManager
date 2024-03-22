@@ -7,7 +7,7 @@
 
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
-        <!-- Notifications Dropdown Menu -->
+        {{-- <!-- Notifications Dropdown Menu -->
         <li class="nav-item dropdown">
             <a class="nav-link" data-toggle="dropdown" href="#">
                 <i class="far fa-bell"></i>
@@ -33,15 +33,18 @@
                 <div class="dropdown-divider"></div>
                 <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
             </div>
-        </li>
+        </li> --}}
 
         <li class="nav-item dropdown">
             <a class="nav-link" data-toggle="dropdown" href="#">
                 <i class="far fa-user"></i>
             </a>
             <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                <a href="#" class="dropdown-item">
+                <a href="{{ route('profile') }}" class="dropdown-item">
                     Hồ sơ cá nhân
+                </a>
+                <a href="{{ route('changePassword') }}" class="dropdown-item">
+                    Thay đổi mật khẩu
                 </a>
                 <a href="{{ route('admin.logout')}}" class="dropdown-item">
                     Đăng Xuất

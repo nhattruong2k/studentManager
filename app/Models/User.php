@@ -78,6 +78,18 @@ class User extends Authenticatable
         return Storage::disk(self::STORAGE_DISK)->url($path . '/' . $this->avatar);
     }
     
+    const MALE = 1;
+    const FEMALE = 0;
+    
+    public function genderOption()
+    {
+        return [
+            self::MALE => __('users.male'),
+            self::FEMALE => __('users.female'),
+        ];
+    }
+
+
     public function roles()
     {
         return $this->belongsToMany(Roles::class, 'user_roles', 'user_id', 'role_id');

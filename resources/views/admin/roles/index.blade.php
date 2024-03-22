@@ -92,7 +92,7 @@
                     <div class="box-numpaging">
                         {!! Form::select('numpaging', App\Libs\Constants::$list_numpaging, Request::get("numpaging"),array('class' => 'form-control select', 'id' => 'selectNumpaging')) !!}
                     </div>
-                    <span class="total-record ml-2 ">{!!__("common.total_data", ['total' => $roles->total()])!!}</span>
+                    <span class="total-record ml-2 mt-2">{!!__("common.total_data", ['total' => $roles->total()])!!}</span>
                 </div>
                 <div class="col-sm-6">
                     <div class="pull-right">

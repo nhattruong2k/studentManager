@@ -37,6 +37,8 @@ return [
     'courses' => 'Khóa học',
     'not_found' => 'Không tìm thấy trang',
     'total_data' => 'Tổng cộng: <strong>:total</strong> kết quả',
+    'save' => 'Lưu',
+    'return' => 'Quay lại',
 ]
 
 

@@ -3,25 +3,28 @@
 namespace App\Repositories;
 
 use Exception;
-use App\Models\User;
-use Illuminate\Http\Request;
-use App\Exceptions\InternalErrorException;
 use App\Models\Roles;
-use App\SubActions\Common\UploadImageSubAction;
+use App\Models\UserRole;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\Exceptions\NotFoundException;
+use App\Exceptions\InternalErrorException;
+use App\SubActions\Common\UploadImageSubAction;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 class RolesRepository extends BaseRepository
 {
     protected $roles;
-
-    public function __construct(Roles $roles)
+    protected $userRole;
+    public function __construct(Roles $roles, UserRole $userRole)
     {
         $this->roles = $roles;
+        $this->userRole = $userRole;
         parent::__construct($roles);
     }
 
-    public function getAll($columns = ['*']){
+    public function getAll($columns = ['*'])
+    {
         return $this->roles->active()->select($columns)->get();
     }
 
@@ -66,10 +69,35 @@ class RolesRepository extends BaseRepository
     }
 
     public function update($request, $id)
-    {  
+    {
         $role = $this->roles->find($id);
         if ($role) {
             return $role->update($request->all());
         }
+    }
+
+    public function active($request, $id)
+    {
+        $role = $this->roles->find($id);
+        if ($role) {
+            return $role->update($request->all());
+        }
+    }
+
+    public function getPermissionRoleUserId($id)
+    {
+        $columns = [
+            DB::raw('permissions.*')
+        ];
+        try {
+            $permissionRoles = $this->userRole->select($columns)
+                ->leftJoin('permission_roles', 'permission_roles.role_id', '=', 'user_roles.role_id')
+                ->leftJoin('permissions', 'permissions.id', '=', 'permission_roles.permission_id')
+                ->whereUserId($id)
+                ->get();
+        } catch (Exception $ex) {
+            throw new NotFoundException(__('common.not_found'));
+        }
+        return $permissionRoles;
     }
 }

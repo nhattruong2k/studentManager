@@ -11,7 +11,7 @@ use Prettus\Repository\Traits\TransformableTrait;
  *
  * @package namespace App\Models;
  */
-class UserRole extends Model
+class UserRole extends Model 
 {
 
     /**
@@ -20,7 +20,6 @@ class UserRole extends Model
      * @var array
      */
     protected $table = "user_roles";
-    
     protected $fillable = [
         'role_id',
         'user_id',

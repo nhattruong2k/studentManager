@@ -8,10 +8,7 @@
             <li class="breadcrumb-item active">
                 <a href="{{ route('admin-home') }}"><i class="fa fa-home"> {{ __('common.home') }}</i></a>
             </li>
-            <li class="breadcrumb-item active">
-                <a href="{{ route(\App\Models\User::LIST) }}">{{ __('users.list') }}</a>
-            </li>
-            <li class="breadcrumb-item active">{{ __('users.edit') }}</li>
+            <li class="breadcrumb-item active">{{ __('users.profile') }}</li>
         </ol>
     </div>
 @stop
@@ -24,7 +21,7 @@
             <h3 class="card-title">{{ $title }}</h3>
         </div>
         <div class="card-body">
-            <form method="POST" action="{{ route('users.update', $user->id) }}" id="form-user" enctype="multipart/form-data">
+            <form method="POST" action="{{ route('updateProfile') }}" id="form-user" enctype="multipart/form-data">
                 @csrf
                 @include('admin.users._form')
             </form>
