@@ -1,5 +1,6 @@
 <div class="card-body">
-    <div class="row mt2">
+    @include('admin.layout.partials._showError')
+    <div class="row">
         <div class="col-md-12">
             <div class="form-group">
                 <label for="name" class="control-label required">{{ __('roles.name') }}</label>

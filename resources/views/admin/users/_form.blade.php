@@ -1,4 +1,5 @@
 <div class="card-body">
+    @include('admin.layout.partials._showError')
     <div class="row">
         <div class="col-md-12">
             <div class="form-group">
@@ -57,8 +58,12 @@
             </div>
             <div class="form-group">
                 <label for="name" class="control-label required">{{ __('users.email') }}</label>
+                @if(!$user->id)
                 <input type="text" name="email" value="{{ $user->email }}" class="form-control rounded-0"
-                    id="email" required />
+                id="email" required />
+                @else
+                <span class="form-control  bg-light not-allowed" readonly="true">{{$user->email}}</span>
+                @endif
             </div>
         </div>
         <div class="col-md-6">
@@ -143,7 +148,6 @@
         $('.select2bs4').select2({
             theme: 'bootstrap4'
         })
-
         var User = {
             init: function() {
                 this.setUpEvent();
@@ -240,8 +244,6 @@
                 });
             }
         }
-
-
 
         $(function() {
             User.init();
