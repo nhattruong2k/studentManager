@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use App\Repositories\RolesRepository;
 use App\Repositories\PermissionsRepository;
+use App\Http\Requests\User\UserRequest;
 
 class UsersController extends Controller
 {
@@ -94,7 +95,7 @@ class UsersController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(UserRequest $request)
     {
         $this->userRepository->create($request);
         return redirect(route(User::LIST));
@@ -136,7 +137,7 @@ class UsersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UserRequest $request, $id)
     {
         $user = $this->userRepository->getById($id);
         $request['is_visible'] = !empty($request['is_visible']) ? $request['is_visible'] : 0;
