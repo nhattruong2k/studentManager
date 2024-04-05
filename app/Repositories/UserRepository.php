@@ -124,20 +124,21 @@ class UserRepository extends BaseRepository
     {
         $userName = $request->name;
         $id = $request->id;
-        return $this->user->when(function ($query) use ($userName, $id) {
-            $query = $this->user->whereUsername($userName);
+
+        return $this->user->when(function($query) use ($userName, $id){
+            $query->whereName($userName);
             if (!empty($id)) {
                 $query = $query->where('id', '!=', $id);
-            }
+            }   
             return $query;
         })->exists();
     }
 
     public function emailExists($request){
-        $email = $request->name;
+        $email = $request->email;
         $id = $request->id;
         return $this->user->when(function ($query) use ($email, $id) {
-            $query = $this->user->whereEmail($email);
+            $query->whereEmail($email);
             if (!empty($id)) {
                 $query = $query->where('id', '!=', $id);
             }

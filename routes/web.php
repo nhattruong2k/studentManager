@@ -7,6 +7,8 @@ use App\Http\Controllers\Admin\AuthController;
 use App\Http\Controllers\Admin\HomeController;
 use App\Http\Controllers\Admin\RolesController;
 use App\Http\Controllers\Admin\UsersController;
+use App\Http\Controllers\Admin\CategoryController;
+use App\Models\Category;
 
 /*
 |--------------------------------------------------------------------------
@@ -68,4 +70,19 @@ Route::group(array('prefix' => '/admin', 'namespace' => 'Admin', 'middleware' =>
         Route::post('/active', [RolesController::class, 'active'])->name('roles-active');
         Route::post('/name-exist', [RolesController::class, 'nameExist'])->name('role-name-exist');
     });
+
+    /*--------------------------------------------------------------------*/
+    /* Category
+    /*--------------------------------------------------------------------*/
+    Route::group(array('prefix' => '/categories', 'namespace' => 'Admin'), function () {
+        Route::get('/', [CategoryController::class, 'index'])->name(Category::LIST)->middleware('can:' . Category::LIST);
+        Route::get('/create', [CategoryController::class, 'create'])->name(Category::CREATE)->middleware('can:' . Category::CREATE);
+        Route::post('/store', [CategoryController::class, 'store'])->name('categories.store');
+        Route::get('/edit/{id}', [CategoryController::class, 'edit'])->name(Category::UPDATE)->middleware('can:' . Category::UPDATE);
+        Route::post('/update/{id}', [CategoryController::class, 'update'])->name('categories.update');
+        Route::post('/destroy', [CategoryController::class, 'destroy'])->name(Category::DELETE)->middleware('can:' . Category::DELETE);
+        Route::post('/active', [CategoryController::class, 'active'])->name('categories-active');
+        // Route::post('/name-exist', [RolesController::class, 'nameExist'])->name('role-name-exist');
+    });
+
 });

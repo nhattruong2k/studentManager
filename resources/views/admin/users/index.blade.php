@@ -56,7 +56,7 @@
                 <tbody>
                     @foreach ($users as $key => $user)
                         <tr>
-                            <td class="text-center align-middle">{{ $key }}</td>
+                            <td class="text-center align-middle">{{ $key+1 }}</td>
                             <td><img src="{{ $user->avatar_url }}" with="100%" height="80" alt=""></td>
                             <td class="align-middle">{{ $user->name }}</td>
                             <td class="align-middle">{{ $user->email }}</td>

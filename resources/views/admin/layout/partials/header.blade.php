@@ -1,4 +1,4 @@
-    <!-- Left navbar links -->
+    {{-- <!-- Left navbar links -->
     <ul class="navbar-nav">
         <li class="nav-item">
             <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
@@ -7,34 +7,6 @@
 
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
-        {{-- <!-- Notifications Dropdown Menu -->
-        <li class="nav-item dropdown">
-            <a class="nav-link" data-toggle="dropdown" href="#">
-                <i class="far fa-bell"></i>
-                <span class="badge badge-warning navbar-badge">15</span>
-            </a>
-            <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                <span class="dropdown-item dropdown-header">15 Notifications</span>
-                <div class="dropdown-divider"></div>
-                <a href="#" class="dropdown-item">
-                    <i class="fas fa-envelope mr-2"></i> 4 new messages
-                    <span class="float-right text-muted text-sm">3 mins</span>
-                </a>
-                <div class="dropdown-divider"></div>
-                <a href="#" class="dropdown-item">
-                    <i class="fas fa-users mr-2"></i> 8 friend requests
-                    <span class="float-right text-muted text-sm">12 hours</span>
-                </a>
-                <div class="dropdown-divider"></div>
-                <a href="#" class="dropdown-item">
-                    <i class="fas fa-file mr-2"></i> 3 new reports
-                    <span class="float-right text-muted text-sm">2 days</span>
-                </a>
-                <div class="dropdown-divider"></div>
-                <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
-            </div>
-        </li> --}}
-
         <li class="nav-item dropdown">
             <a class="nav-link" data-toggle="dropdown" href="#">
                 <i class="far fa-user"></i>
@@ -51,4 +23,29 @@
                 </a>
             </div>
         </li>
-    </ul>
+    </ul> --}}
+    <div class="container-fluid">
+        <a class="navbar-brand text-white pt-3 pb-0 fs-3" href="{{route('admin-home')}}">Quản lý Đào Tạo</a>
+        <div class="collapse d-flex flex-row-reverse">
+            <ul class="nav">
+                <li class="nav-item">
+                    <p class="nav-link text-white">Lớp học xong</p>
+                </li>
+                <li class="nav-item fs-5">
+                    <p class="nav-link rounded-circle bg-danger text-white">0</p>
+                </li>
+                <li class="nav-item">
+                    <p class="nav-link rounded-circle bg-dark text-white mx-1 fs-5">
+                        <i class="fa-solid fa-download"></i>
+                    </p>
+                </li>
+                <li class="nav-item">
+                    <a href="{{route('admin.logout')}}">
+                        <p class="nav-link rounded-circle bg-dark text-white fs-5">
+                            <i class="fa-solid fa-right-to-bracket"></i>
+                        </p>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>

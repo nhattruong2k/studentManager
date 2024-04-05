@@ -1,18 +1,22 @@
 <?php 
 
 namespace App\Services;
+
+use App\Models\Category;
 use App\Models\User;
 use App\Models\Role;
 use App\Models\Roles;
 use Illuminate\Support\Facades\Gate;
 use App\Policies\RolePolicy;
 use App\Policies\UserPolicy;
+use App\Policies\CategoryPolicy;
 
 class PermissionGateAndPolicyAccess{
 
     public function setGateAndPolicyAccess(){
         $this->defineGateUser();
         $this->defineGateRole();
+        $this->defineGateCateogry();
     }
 
     public function defineGateUser(){
@@ -27,5 +31,12 @@ class PermissionGateAndPolicyAccess{
         Gate::define(Roles::CREATE, [RolePolicy::class, 'create']);
         Gate::define(Roles::UPDATE, [RolePolicy::class, 'update']);
         Gate::define(Roles::DELETE, [RolePolicy::class, 'delete']);
+    }
+
+    public function defineGateCateogry(){
+        Gate::define(Category::LIST, [CategoryPolicy::class, 'view']);
+        Gate::define(Category::CREATE, [CategoryPolicy::class, 'create']);
+        Gate::define(Category::UPDATE, [CategoryPolicy::class, 'update']);
+        Gate::define(Category::DELETE, [CategoryPolicy::class, 'delete']);
     }
 }
