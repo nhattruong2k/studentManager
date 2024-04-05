@@ -125,3 +125,25 @@ select {
     color: red;
     font-size: 12px;
 }
+/*  */
+.roboto-regular {
+    font-family: "Roboto", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.roboto-medium {
+    font-family: "Roboto", sans-serif;
+    font-weight: 500;
+    font-style: normal;
+}
+
+a.nav-link.dropdown-item.text-white.px-2:hover {
+    background-color: #6aa8d4;
+}
+
+/* Containt */
+.border-shadow {
+    border: 5px solid transparent;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);}

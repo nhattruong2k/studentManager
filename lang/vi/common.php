@@ -39,6 +39,7 @@ return [
     'total_data' => 'Tổng cộng: <strong>:total</strong> kết quả',
     'save' => 'Lưu',
     'return' => 'Quay lại',
+    'catgegory' => 'Danh mục',
 ]
 
 

@@ -11,45 +11,72 @@
     <title>QUẢN LÝ HỌC VIÊN</title>
 
     <!-- Google Font: Source Sans Pro -->
-    <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="{{ asset('admin/plugins/fontawesome-free/css/all.min.css') }}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+
     <!-- Ionicons -->
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
     <!-- Tempusdominus Bootstrap 4 -->
-    <link rel="stylesheet"
-        href="{{ asset('admin/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css') }}">
-    <!-- iCheck -->
 
     <link rel="stylesheet" href="{{ asset('admin/plugins/select2/css/select2.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('admin/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css') }}">
 
-    <link rel="stylesheet" href="{{ asset('admin/plugins/icheck-bootstrap/icheck-bootstrap.min.css') }}">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{asset('accset/css/bootstrap.min.css') }}"> 
+
+    <script src="{{asset('accset/js/bootstrap.bundle.min.js') }}"></script>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="{{asset('fontawesome-free-6.5.1-web/css/all.min.css') }}">
+
     <!-- JQVMap -->
-    <link rel="stylesheet" href="{{ asset('admin/plugins/jqvmap/jqvmap.min.css') }}">
+    {{-- <link rel="stylesheet" href="{{ asset('admin/plugins/jqvmap/jqvmap.min.css') }}"> --}}
     <!-- Theme style -->
     <link rel="stylesheet" href="{{ asset('admin/dist/css/adminlte.min.css') }}">
     <!-- overlayScrollbars -->
     <link rel="stylesheet" href="{{ asset('admin/plugins/overlayScrollbars/css/OverlayScrollbars.min.css') }}">
     <!-- Daterange picker -->
     <link rel="stylesheet" href="{{ asset('admin/plugins/daterangepicker/daterangepicker.css') }}">
-    {{-- <link rel="stylesheet" href="{{ asset('bootstrap_fileupload/bootstrap-fileupload.min.css') }}"> --}}
+    <link rel="stylesheet" href="{{ asset('bootstrap_fileupload/bootstrap-fileupload.min.css') }}">
     <!-- summernote -->
-    <link rel="stylesheet" href="{{ asset('admin/plugins/summernote/summernote-bs4.min.css') }}">
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
+    {{-- Style LK_Tree --}}
+    <link href="{{ asset('css/style_tree.css') }}" rel="stylesheet">
+
     {{-- Toasrt --}}
-    {{-- <link href="{{ asset('admin/toastr/build/toastr.min.css') }}" rel="stylesheet" />
-    <link href="{{ asset('admin/toastr/build/toastrall.min.css') }}" rel="stylesheet" /> --}}
+    <link href="{{ asset('admin/toastr/build/toastr.min.css') }}" rel="stylesheet" />
+    <link href="{{ asset('admin/toastr/build/toastrall.min.css') }}" rel="stylesheet" />
 
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     @notifyCss
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
-    <div class="wrapper">
+    <!-- Header -->
+    <div class="header roboto-regular">
+        <nav class="navbar navbar-expand-lg bg-primary border-bottom border-danger border-5">
+            @include('admin.layout.partials.header')    
+        </nav>
+
+        <nav class="navbar navbar-expand-lg bg-primary">
+            @include('admin.layout.partials.navbar')
+        </nav>
+    </div>
+    <!-- /Header -->
+
+    <!-- Contain -->
+    <div class="container-fluid">
+        <!-- <div class="" style="background-color: #78affb;">
+        </div> -->
+        <div class="row">
+            <div class="col-12 col-sm-2 border border-secondary border-1 my-1 border-shadow " style="background-color: #e7e0e0;">
+                @include('admin.layout.partials.sidebar_left')
+            </div>
+
+            <div class="col-12 col-sm-10 my-1">
+                <section class="mh-100vh container-fluid mt-2">
+                    @yield('contents')
+                </section>  
+            </div>
+        </div>
+    </div>
+    {{-- <div class="wrapper">
         <!-- Navbar -->
         <nav class="main-header navbar navbar-expand navbar-white navbar-light">
             @include('admin.layout.partials.header')
@@ -96,7 +123,7 @@
             <!-- Control sidebar content goes here -->
         </aside>
         <!-- /.control-sidebar -->
-    </div>
+    </div> --}}
     <x-notify::notify />
     <!-- ./wrapper -->
     @notifyJs

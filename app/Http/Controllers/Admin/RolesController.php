@@ -12,6 +12,7 @@ use App\Http\Controllers\Controller;
 use App\Repositories\RolesRepository;
 use App\Repositories\PermissionsRepository;
 use App\Repositories\CheckExistRoleNameRepository;
+use App\Http\Requests\Roles\RolesRequest;
 
 class RolesController extends Controller
 {
@@ -89,7 +90,7 @@ class RolesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(RolesRequest $request)
     {
         $this->rolesRepository->create($request);
         return redirect(route(Roles::LIST));
@@ -130,9 +131,9 @@ class RolesController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\Response 
      */
-    public function update(Request $request, $id)
+    public function update(RolesRequest $request, $id)
     {
         $role = $this->rolesRepository->getById($id);
         $request['is_visible'] = !empty($request['is_visible']) ? $request['is_visible'] : 0;

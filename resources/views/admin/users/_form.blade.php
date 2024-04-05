@@ -1,4 +1,5 @@
 <div class="card-body">
+    @include('admin.layout.partials._showError')
     <div class="row">
         <div class="col-md-12">
             <div class="form-group">
@@ -57,8 +58,12 @@
             </div>
             <div class="form-group">
                 <label for="name" class="control-label required">{{ __('users.email') }}</label>
+                @if(!$user->id)
                 <input type="text" name="email" value="{{ $user->email }}" class="form-control rounded-0"
-                    id="email" required />
+                id="email" required />
+                @else
+                <span class="form-control  bg-light not-allowed" readonly="true">{{$user->email}}</span>
+                @endif
             </div>
         </div>
         <div class="col-md-6">
@@ -124,11 +129,13 @@
         </div>
     </div>
 </div>
-<div class="card-footer">
-    <button type="submit" class="btn btn-info" id="btn_save"><i class="fa fa-save">
-            {{ !$user->id ? __('common.create') : __('common.update') }}</i></button>
-    <a href="{{ route(\App\Models\User::LIST) }}" class="btn btn-default"><i class="fa fa-reply">
-            {{ __('common.cancel') }}</i></a>
+<div class="row">
+    <div class="col-md-12">
+        <div class="form-group">
+            <button type="submit" class="btn btn-info"><i class="fa fa-save"></i>   {{ !$user->id ? __('common.create') : __('common.update') }}</button>
+                <a href="{{route(\App\Models\User::LIST)}}" class="btn btn-default"><i class="fa fa-reply"></i> {{__('common.cancel')}}</a>
+        </div>
+    </div>
 </div>
 <script type="text/javascript">
     mn_selected = 'mn_users';
@@ -143,7 +150,6 @@
         $('.select2bs4').select2({
             theme: 'bootstrap4'
         })
-
         var User = {
             init: function() {
                 this.setUpEvent();
@@ -240,8 +246,6 @@
                 });
             }
         }
-
-
 
         $(function() {
             User.init();

@@ -2,6 +2,7 @@
 
 use App\Models\User;
 use App\Models\Roles;
+use App\Models\Category;
 
 return [
     'access' => [
@@ -16,6 +17,12 @@ return [
             'create' => Roles::CREATE,
             'update' => Roles::UPDATE,
             'delete' => Roles::DELETE,
+        ],
+        'categories' => [
+            'list' => Category::LIST,
+            'create' => Category::CREATE,
+            'update' => Category::UPDATE,
+            'delete' => Category::DELETE,
         ]
     ]
 ];

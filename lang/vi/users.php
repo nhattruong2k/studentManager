@@ -27,6 +27,7 @@ return [
     'verify' => 'Xác thực',
     'update_successfully' => 'Cập nhật người dùng thành công',
     'status_successfully' => 'Cập nhật trạng thái thành công',
+    'password'=>'Mật khẩu',
     'change_password' => 'Thay đổi mật khẩu',
     'new_pass' => 'Mật khẩu mới',
     'retry_pass' => 'Nhập lại mật khẩu',

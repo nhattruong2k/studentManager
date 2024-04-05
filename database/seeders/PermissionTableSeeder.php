@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Category;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use App\Models\User;
@@ -42,6 +43,8 @@ class PermissionTableSeeder extends Seeder
                 'type' => 'users',
                 'key_code' => User::DELETE,
             ],
+            
+            // Roles
             [
                 'name' => 'Vai trò',
                 'type' => 'group',
@@ -66,6 +69,33 @@ class PermissionTableSeeder extends Seeder
                 'name' => 'Xóa',
                 'type' => 'roles',
                 'key_code' => Roles::DELETE,
+            ],
+
+            // Category
+            [
+                'name' => 'Danh mục',
+                'type' => 'group',
+                'key_code' => 'categories',
+            ],
+            [
+                'name' => 'Danh sách',
+                'type' => 'categories',
+                'key_code' => Category::LIST,
+            ],
+            [
+                'name' => 'Thêm mới',
+                'type' => 'categories',
+                'key_code' => Category::CREATE,
+            ],
+            [
+                'name' => 'Cập nhật',
+                'type' => 'categories',
+                'key_code' => Category::UPDATE,
+            ],
+            [
+                'name' => 'Xóa',
+                'type' => 'categories',
+                'key_code' => Category::DELETE,
             ],
         ];
         \DB::table('permissions')->insert($permissions);

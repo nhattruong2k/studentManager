@@ -63,7 +63,7 @@
                                     <input type="checkbox" class="checkItem" value="{{ $role->id }}" />
                                 @endif
                             </td>
-                            <td class="text-center align-middle">{{ $key++ }}</td>
+                            <td class="text-center align-middle">{{ $key+1 }}</td>
                             <td class="align-middle">{{ $role->name }}</td>
                             <td class="text-center w_100 align-middle">
                                 @if ($role->is_visible)

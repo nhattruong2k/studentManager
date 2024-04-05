@@ -1,84 +1,140 @@
-    <!-- Brand Logo -->
-    <a href="index3.html" class="brand-link">
-        <img src="dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
-            style="opacity: .8">
-        <span class="brand-text font-weight-light">{{ __('common.management_student') }}</span>
-    </a>
-
-    <!-- Sidebar -->
-    <div class="sidebar">
-        <!-- Sidebar user panel (optional) -->
-        <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-            <div class="image">
-                <img src="dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
-            </div>
-            <div class="info">
-                <a href="#" class="d-block">{{ Auth::user()->name }}</a>
-            </div>
-        </div>
-
-        <!-- SidebarSearch Form -->
-        <div class="form-inline">
-            <div class="input-group" data-widget="sidebar-search">
-                <input class="form-control form-control-sidebar" type="search" placeholder="Search"
-                    aria-label="Search">
-                <div class="input-group-append">
-                    <button class="btn btn-sidebar">
-                        <i class="fas fa-search fa-fw"></i>
-                    </button>
-                </div>
-            </div>
-        </div>
-        {{-- User & Role --}}
-        
-            <!-- Sidebar Menu -->
-            <nav class="mt-2">
-                <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-                    {{-- Home Dashboard --}}
-                    <li class="nav-item">
-                        <a href="{{ route('admin-home') }}" class="nav-link">
-                            <i class="nav-icon fas  fa-home"></i>
-                            <p>
-                                {{ __('common.home') }}
-                            </p>
-                        </a>
-                    </li>
-                    @if(auth()->user()->can(\App\Models\User::LIST) || auth()->user()->can(\App\Models\Roles::LIST))
-                    {{-- User & Role --}}
-                    <li class="nav-item">
-                        <a href="#" class="nav-link">
-                            <i class="nav-icon fas fa-users"></i>
-                            <p>
-                                {{ __('users.managements') }}
-                                <i class="right fas fa-angle-left"></i>
-                            </p>
-                        </a>
-                        <ul class="nav nav-treeview">
-                            @can(\App\Models\User::LIST)
-                            <li class="nav-item">
-                                <a href="{{ route(\App\Models\User::LIST) }}" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>
-                                        {{ __('users.user') }}
-                                    </p>
-                                </a>
+<div class="row mt-2">
+    <div class="col-sm-6">
+        <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
+            <option selected>Open this select menu</option>
+            <option value="1">One</option>
+            <option value="2">Two</option>
+            <option value="3">Three</option>
+        </select>
+    </div>
+    <div class="col-sm-6">
+        <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
+            <option selected>Open this select menu</option>
+            <option value="1">One</option>
+            <option value="2">Two</option>
+            <option value="3">Three</option>
+        </select>
+    </div>
+</div>
+<div class="row justify-content-center ms-1">
+    <div class="card-body fs-5">
+        <ul class="lk-tree-menu">
+            <li>
+                <input type="checkbox" checked="checked" id="smCB-1" />
+                <label class="tree_label" for="smCB-1">2024-2025</label>
+                <ul>
+                    <li>
+                        <input type="checkbox" checked="checked" id="smCB-2" />
+                        <label class="tree_label" for="smCB-2">CNTT</label>
+                        <ul>
+                            <li>
+                                <input type="checkbox" checked="checked" id="smCB-3" />
+                                <label class="tree_label" for="smCB-3">24CNTT01</label>
+                                <ul>
+                                    <li><span class="tree_label">E-203</span>
+                                    </li>
+                                    <li><span class="tree_label">E-204</span>
+                                    </li>
+                                </ul>
                             </li>
-                            @endcan
-                            @can(\App\Models\Roles::LIST)
-                            <li class="nav-item">
-                                <a href="{{ route(\App\Models\Roles::LIST) }}" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>
-                                        {{ __('users.role') }}
-                                    </p>
-                                </a>
+                            <li>
+                                <input type="checkbox" checked="checked" id="smCB-4" />
+                                <label class="tree_label" for="smCB-4">24CNTT02</label>
+                                <ul>
+                                    <li><span class="tree_label">B-203</span>
+                                    </li>
+                                    <li><span class="tree_label">B-204</span>
+                                    </li>
+                                </ul>
                             </li>
-                            @endcan
                         </ul>
                     </li>
-                    @endif
+                    <li>
+                        <input type="checkbox" checked="checked" id="smCB-5" />
+                        <label class="tree_label" for="smCB-5">QTKS</label>
+                        <ul>
+                            <li>
+                                <input type="checkbox" checked="checked" id="smCB-6" />
+                                <label class="tree_label" for="smCB-6">24QTKS01</label>
+                                <ul>
+                                    <li><span class="tree_label">H-101</span>
+                                    </li>
+                                    <li><span class="tree_label">H-102</span>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <input type="checkbox" checked="checked" id="smCB-7" />
+                                <label class="tree_label" for="smCB-7">24QTKS02</label>
+                                <ul>
+                                    <li><span class="tree_label">F-101</span>
+                                    </li>
+                                    <li><span class="tree_label">F-101</span>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
                 </ul>
-            </nav>
-        <!-- /.sidebar-menu -->
+            </li>
+            <li>
+                <input type="checkbox" checked="checked" id="smCB-8" />
+                <label class="tree_label" for="smCB-8">2023-2024</label>
+                <ul>
+                    <li>
+                        <input type="checkbox" checked="checked" id="smCB-8" />
+                        <label class="tree_label" for="smCB-8">CNTT</label>
+                        <ul>
+                            <li>
+                                <input type="checkbox" checked="checked" id="smCB-9" />
+                                <label class="tree_label" for="smCB-9">23CNTT01</label>
+                                <ul>
+                                    <li><span class="tree_label">A-203</span>
+                                    </li>
+                                    <li><span class="tree_label">A-204</span>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <input type="checkbox" checked="checked" id="smCB-10" />
+                                <label class="tree_label" for="smCB-10">24CNTT02</label>
+                                <ul>
+                                    <li><span class="tree_label">C-203</span>
+                                    </li>
+                                    <li><span class="tree_label">C-204</span>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <input type="checkbox" checked="checked" id="smCB-11" />
+                        <label class="tree_label" for="smCB-11">QTKS</label>
+                        <ul>
+                            <li>
+                                <input type="checkbox" checked="checked" id="smCB-12" />
+                                <label class="tree_label" for="smCB-12">24QTKS01</label>
+                                <ul>
+                                    <li><span class="tree_label">F-101</span>
+                                    </li>
+                                    <li><span class="tree_label">F-102</span>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <input type="checkbox" checked="checked" id="smCB-13" />
+                                <label class="tree_label" for="smCB-13">24QTKS02</label>
+                                <ul>
+                                    <li><span class="tree_label">N-101</span>
+                                    </li>
+                                    <li><span class="tree_label">n-101</span>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+        </ul>
     </div>
-    <!-- /.sidebar -->
+</div>
