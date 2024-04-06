@@ -61,7 +61,6 @@ class UserRepository extends BaseRepository
         return $user;
     }
 
-
     public function getById($id)
     {
         try {
@@ -84,12 +83,12 @@ class UserRepository extends BaseRepository
             }
         }
 
-        if ($request->role_id) {
-            $user->roles()->sync($request->role_id);
+        if ($user) {
+            $user->update($request->all());
         }
 
-        if ($user) {
-            return $user->update($request->all());
+        if ($request->role_id){
+            $user->roles()->sync($request->role_id);
         }
 
         return $user;

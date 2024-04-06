@@ -22,10 +22,10 @@ use App\Models\Category;
 */
 
 Route::get('/', function () {
-    return redirect(url('/admin'));
+    return null;
 });
 
-Route::group(array('prefix' => '/admin', 'namespace' => 'Admin'), function (){
+Route::group(array('prefix' => '/', 'namespace' => 'Admin'), function (){
     Route::get('/login', [AuthController::class, 'getLogin'])->name('admin.login');
     Route::post('/login', [AuthController::class, 'postLogin'])->name('admin.post_login');
     Route::get('/logout', [AuthController::class, 'logout'])->name('admin.logout');

@@ -139,6 +139,7 @@ class UsersController extends Controller
      */
     public function update(UserRequest $request, $id)
     {
+
         $user = $this->userRepository->getById($id);
         $request['is_visible'] = !empty($request['is_visible']) ? $request['is_visible'] : 0;
         $this->userRepository->update($request, $id);
