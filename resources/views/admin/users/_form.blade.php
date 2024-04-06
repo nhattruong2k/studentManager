@@ -40,7 +40,7 @@
                         data-placeholder="{{ __('common.role') }}" style="width: 100%;"
                         {{ Request::segment(3) == 'profile' ? 'disabled' : '' }}>
                         @foreach ($roles as $item)
-                            <option
+                            <option 
                                 {{ isset($roleOfUser) ? ($roleOfUser->contains('id', $item->id) ? 'selected' : '') : '' }}
                                 value="{{ $item->id }}">{{ $item->name }}</option>
                         @endforeach
@@ -128,12 +128,12 @@
             </div>
         </div>
     </div>
-</div>
-<div class="row">
-    <div class="col-md-12">
-        <div class="form-group">
-            <button type="submit" class="btn btn-info"><i class="fa fa-save"></i>   {{ !$user->id ? __('common.create') : __('common.update') }}</button>
-                <a href="{{route(\App\Models\User::LIST)}}" class="btn btn-default"><i class="fa fa-reply"></i> {{__('common.cancel')}}</a>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group">
+                <button type="submit" class="btn btn-info"><i class="fa fa-save"></i>   {{ !$user->id ? __('common.create') : __('common.update') }}</button>
+                    <a href="{{route(\App\Models\User::LIST)}}" class="btn btn-default"><i class="fa fa-reply"></i> {{__('common.cancel')}}</a>
+            </div>
         </div>
     </div>
 </div>

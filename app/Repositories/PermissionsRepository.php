@@ -20,7 +20,4 @@ class PermissionsRepository extends BaseRepository
         return $this->permissions->whereType('group')->get('*' );
     }
 
-    // public function create($request = null){
-    //     return $this->permissions->whereType('group')->get('*' );
-    // }
 }

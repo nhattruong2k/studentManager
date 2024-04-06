@@ -7,39 +7,52 @@
     </button>
     <div class="collapse navbar-collapse flex-row-reverse" id="navbarNavAltMarkup">
         <div class="navbar-nav">
-            <div class="btn-group">
-                <a class="dropdown-toggle nav-link text-white" data-bs-toggle="dropdown"
-                    data-bs-display="static" aria-expanded="false" href="#">
-                    Phân quyền
-                </a>
-                <ul class="dropdown-menu bg-primary">
-                    <li><a class="nav-link dropdown-item text-white px-2" href="{{ route(\App\Models\User::LIST) }}">Danh sách quản lý</a>
-                    </li>
-                    <li><a class="nav-link dropdown-item text-white px-2" href="{{ route(\App\Models\Roles::LIST) }}">Vai trò</a></li>
-                </ul>
-            </div>
+            @if (auth()->user()->can(\App\Models\User::LIST) ||
+                    auth()->user()->can(\App\Models\Roles::LIST))
+                <div class="btn-group">
+                    <a class="dropdown-toggle nav-link text-white" data-bs-toggle="dropdown" data-bs-display="static"
+                        aria-expanded="false" href="#">
+                        Phân quyền
+                    </a>
+                    <ul class="dropdown-menu bg-primary">
+                        @can(\App\Models\User::LIST)
+                            <li>
+                                <a class="nav-link dropdown-item text-white px-2"
+                                    href="{{ route(\App\Models\User::LIST) }}">Danh sách quản lý</a>
+                            </li>
+                        @endcan
+                        @can(\App\Models\Roles::LIST)
+                            <li>
+                                <a class="nav-link dropdown-item text-white px-2"
+                                    href="{{ route(\App\Models\Roles::LIST) }}">Vai trò</a>
+                            </li>
+                        @endcan
+                    </ul>
 
-            <div class="btn-group">
-                <a class="dropdown-toggle nav-link text-white" data-bs-toggle="dropdown"
-                    data-bs-display="static" aria-expanded="false" href="#">
-                    Quản lý Danh mục
-                </a>
-                <ul class="dropdown-menu bg-primary">
-                    <li><a class="nav-link dropdown-item text-white px-2" href="#">Quản lý Khóa học</a></li>
-                    <li><a class="nav-link dropdown-item text-white px-2" href="#">Danh mục Học Phần(Môn
-                            học)</a></li>
-                    <li><a class="nav-link dropdown-item text-white px-2" href="#">Danh mục Phòng học</a>
-                    </li>
-                </ul>
-            </div>
-
+                </div>
+            @endif
+            @if (auth()->user()->can(\App\Models\Category::LIST))
+                <div class="btn-group">
+                    <a class="dropdown-toggle nav-link text-white" data-bs-toggle="dropdown" data-bs-display="static"
+                        aria-expanded="false" href="#">
+                        Quản lý Danh mục
+                    </a>
+                    <ul class="dropdown-menu bg-primary">
+                        <li><a class="nav-link dropdown-item text-white px-2" href="#">Quản lý Khóa học</a></li>
+                        <li><a class="nav-link dropdown-item text-white px-2" href="#">Danh mục Học Phần(Môn
+                                học)</a></li>
+                        <li><a class="nav-link dropdown-item text-white px-2" href="#">Danh mục Phòng học</a>
+                        </li>
+                    </ul>
+                </div>
+            @endif
             <a class="nav-link text-white" href="#">Quản lý Lớp sinh hoạt</a>
 
             <a class="nav-link text-white" href="#">Quản lý lớp học phần</a>
 
             <div class="btn-group">
-                <a class="dropdown-toggle nav-link text-white" data-bs-toggle="dropdown"
-                    data-bs-display="static" aria-expanded="false" href="#">
+                <a class="dropdown-toggle nav-link text-white" data-bs-toggle="dropdown" data-bs-display="static"
+                    aria-expanded="false" href="#">
                     Quản lý thanh toán giảng viên
                 </a>
                 <ul class="dropdown-menu bg-primary">
@@ -55,8 +68,8 @@
             </div>
 
             <div class="btn-group">
-                <a class="dropdown-toggle nav-link text-white" data-bs-toggle="dropdown"
-                    data-bs-display="static" aria-expanded="false" href="#">
+                <a class="dropdown-toggle nav-link text-white" data-bs-toggle="dropdown" data-bs-display="static"
+                    aria-expanded="false" href="#">
                     Báo cáo - In ấn
                 </a>
                 <ul class="dropdown-menu bg-primary">
@@ -76,8 +89,8 @@
             </div>
 
             <div class="btn-group">
-                <a class="dropdown-toggle nav-link text-white" data-bs-toggle="dropdown"
-                    data-bs-display="static" aria-expanded="false" href="#">
+                <a class="dropdown-toggle nav-link text-white" data-bs-toggle="dropdown" data-bs-display="static"
+                    aria-expanded="false" href="#">
                     Quản lý thời khóa biểu
                 </a>
                 <ul class="dropdown-menu bg-primary">
@@ -89,8 +102,8 @@
             </div>
 
             <div class="btn-group">
-                <a class="dropdown-toggle nav-link text-white" data-bs-toggle="dropdown"
-                    data-bs-display="static" aria-expanded="false" href="#">
+                <a class="dropdown-toggle nav-link text-white" data-bs-toggle="dropdown" data-bs-display="static"
+                    aria-expanded="false" href="#">
                     Thiết lập
                 </a>
                 <ul class="dropdown-menu dropdown-menu-lg-end bg-primary">

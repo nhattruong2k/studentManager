@@ -65,12 +65,14 @@
             </div>
         @endforeach
     </div>
-</div>
-<div class="card-footer">
-    <button type="submit" class="btn btn-info" id="btn_save"><i class="fa fa-save">
-            {{ __('common.create') }}</i></button>
-    <a href="{{ route(\App\Models\Roles::LIST) }}" class="btn btn-default"><i class="fa fa-reply">
-            {{ __('common.cancel') }}</i></a>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group">
+                <button type="submit" class="btn btn-info"><i class="fa fa-save"></i>   {{ !$role->id ? __('common.create') : __('common.update') }}</button>
+                    <a href="{{ route(\App\Models\Roles::LIST) }}" class="btn btn-default"><i class="fa fa-reply"></i> {{__('common.cancel')}}</a>
+            </div>
+        </div>
+    </div>
 </div>
 <script type="text/javascript">
     mn_selected = 'mn_roles';
@@ -79,8 +81,7 @@
     <script type="text/javascript">
         $(function() {
             $('.checkbox_all').on('click', function() {
-                $(this).parents('#card').find('.checkbox_childrent').prop('checked', $(this).prop(
-                    'checked'));
+                let x = $(this).parents('#card').find('.checkbox_childrent').prop('checked', $(this).prop('checked'));
                 let all_checkbox = $('.checkbox_all').length
                 let all_checkbox_checked = $('.checkbox_all:checked').length
                 if (all_checkbox == all_checkbox_checked) {
