@@ -8,7 +8,9 @@ use App\Http\Controllers\Admin\HomeController;
 use App\Http\Controllers\Admin\RolesController;
 use App\Http\Controllers\Admin\UsersController;
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\CourseController;
 use App\Models\Category;
+use App\Models\Course;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,7 +27,7 @@ Route::get('/', function () {
     return redirect(url('/admin'));
 });
 
-Route::group(array('prefix' => '/admin', 'namespace' => 'Admin'), function (){
+Route::group(array('prefix' => '/admin', 'namespace' => 'Admin'), function () {
     Route::get('/login', [AuthController::class, 'getLogin'])->name('admin.login');
     Route::post('/login', [AuthController::class, 'postLogin'])->name('admin.post_login');
     Route::get('/logout', [AuthController::class, 'logout'])->name('admin.logout');
@@ -47,7 +49,7 @@ Route::group(array('prefix' => '/admin', 'namespace' => 'Admin', 'middleware' =>
         Route::post('/destroy', [UsersController::class, 'destroy'])->name(User::DELETE)->middleware('can:' . User::DELETE);
         Route::get('/profile', [UsersController::class, 'profile'])->name('profile');
         Route::post('/profile', [UsersController::class, 'updateProfile'])->name('updateProfile');
-        Route::get('/change-password', [UsersController::class, 'changePassword'])->name('changePassword')->middleware('can:'. User::UPDATE);
+        Route::get('/change-password', [UsersController::class, 'changePassword'])->name('changePassword')->middleware('can:' . User::UPDATE);
         Route::post('/change-password', [UsersController::class, 'saveChangePassword'])->name('saveChangePassword');
         Route::get('/change-password/{id}', [UsersController::class, 'userChangePass'])->name('user.change_pass');
         Route::post('/change-password/{id}', [UsersController::class, 'saveUserChangePass'])->name('users.save_change_pass');
@@ -55,7 +57,6 @@ Route::group(array('prefix' => '/admin', 'namespace' => 'Admin', 'middleware' =>
         Route::post('/save-permission/{id}', [UsersController::class, 'savePermission'])->name('users.save_permission');
         Route::post('/name-exists', [UsersController::class, 'nameExists'])->name('name_exists');
         Route::post('/email-exists', [UsersController::class, 'emailExists'])->name('email_exists');
-
     });
     /*--------------------------------------------------------------------*/
     /* Role
@@ -85,4 +86,15 @@ Route::group(array('prefix' => '/admin', 'namespace' => 'Admin', 'middleware' =>
         // Route::post('/name-exist', [RolesController::class, 'nameExist'])->name('role-name-exist');
     });
 
+    /*--------------------------------------------------------------------*/
+    /* Courses
+    /*--------------------------------------------------------------------*/
+    Route::group(['prefix' => '/courses', 'namespace' => 'Admin'], function () {
+        Route::get('/', [CourseController::class, 'index'])->name(Course::LIST);
+        Route::get('/create', [CourseController::class, 'create'])->name(Course::CREATE);
+        Route::post('/store', [CourseController::class, 'store'])->name('courses.store');
+        Route::get('/edit/{id}', [CourseController::class, 'edit'])->name(Course::UPDATE);
+        Route::post('/update/{id}', [CourseController::class, 'update'])->name('courses.update');
+        Route::post('/destroy', [CourseController::class, 'destroy'])->name(Course::DELETE);
+    });
 });

@@ -1,7 +1,7 @@
-<?php 
+<?php
 
 return [
-    'management_student'=>'Quản lý học viên',
+    'management_student' => 'Quản lý học viên',
     'login'  => 'Đăng nhập',
     'home'  => 'Trang chủ',
     'dashboard'  => 'Dashboard',
@@ -23,8 +23,10 @@ return [
     'choose' => 'Chọn',
     'change' => 'Thay đổi',
     'delete' => 'Xoá',
-    'users' => 'Người dùng',
+    'users' => 'Người dù
+    ng',
     'roles' => 'Vai trò',
+    'course' => 'Khóa học',
     'checkedAll' => 'Chọn tất cả',
     'confirm_delete' => 'Bạn có chắc chắn muốn xóa không?',
     'yes' => 'Đồng ý',
@@ -40,23 +42,4 @@ return [
     'save' => 'Lưu',
     'return' => 'Quay lại',
     'catgegory' => 'Danh mục',
-]
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-?>
+];

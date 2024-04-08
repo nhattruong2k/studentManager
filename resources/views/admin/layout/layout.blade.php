@@ -11,7 +11,8 @@
     <title>QUẢN LÝ HỌC VIÊN</title>
 
     <!-- Google Font: Source Sans Pro -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
 
     <!-- Ionicons -->
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
@@ -19,11 +20,11 @@
 
     <link rel="stylesheet" href="{{ asset('admin/plugins/select2/css/select2.min.css') }}">
 
-    <link rel="stylesheet" href="{{asset('accset/css/bootstrap.min.css') }}"> 
+    <link rel="stylesheet" href="{{ asset('accset/css/bootstrap.min.css') }}">
 
-    <script src="{{asset('accset/js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ asset('accset/js/bootstrap.bundle.min.js') }}"></script>
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="{{asset('fontawesome-free-6.5.1-web/css/all.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('fontawesome-free-6.5.1-web/css/all.min.css') }}">
 
     <!-- JQVMap -->
     {{-- <link rel="stylesheet" href="{{ asset('admin/plugins/jqvmap/jqvmap.min.css') }}"> --}}
@@ -44,6 +45,11 @@
     <link href="{{ asset('admin/toastr/build/toastrall.min.css') }}" rel="stylesheet" />
 
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+    @yield('style')
+    @stack('style')
+    @livewireStyles
+
     @notifyCss
 </head>
 
@@ -51,7 +57,7 @@
     <!-- Header -->
     <div class="header roboto-regular">
         <nav class="navbar navbar-expand-lg bg-primary border-bottom border-danger border-5">
-            @include('admin.layout.partials.header')    
+            @include('admin.layout.partials.header')
         </nav>
 
         <nav class="navbar navbar-expand-lg bg-primary">
@@ -65,14 +71,15 @@
         <!-- <div class="" style="background-color: #78affb;">
         </div> -->
         <div class="row">
-            <div class="col-12 col-sm-2 border border-secondary border-1 my-1 border-shadow " style="background-color: #e7e0e0;">
+            <div class="col-12 col-sm-2 border border-secondary border-1 my-1 border-shadow "
+                style="background-color: #e7e0e0;">
                 @include('admin.layout.partials.sidebar_left')
             </div>
 
             <div class="col-12 col-sm-10 my-1">
                 <section class="mh-100vh container-fluid mt-2">
                     @yield('contents')
-                </section>  
+                </section>
             </div>
         </div>
     </div>
@@ -126,7 +133,9 @@
     </div> --}}
     <x-notify::notify />
     <!-- ./wrapper -->
+    @stack('script')
     @notifyJs
+    @livewireScripts
     <script src="{{ asset('admin/plugins/jquery/jquery.min.js') }}"></script>
     <!-- jQuery UI 1.11.4 -->
 

@@ -123,7 +123,7 @@ class RolesController extends Controller
         $this->data['role'] = $role;
         $this->data['permissionsChecked'] = $permissionsChecked;
 
-        return view('admin.roles.edit')->with($this->data)->with(['code' => Response::HTTP_OK,'message' => __('roles.update')]);
+        return view('admin.roles.edit')->with($this->data)->with(['code' => Response::HTTP_OK, 'message' => __('roles.update')]);
     }
 
     /**
@@ -131,7 +131,7 @@ class RolesController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
-     * @return \Illuminate\Http\Response 
+     * @return \Illuminate\Http\Response
      */
     public function update(RolesRequest $request, $id)
     {
@@ -154,14 +154,13 @@ class RolesController extends Controller
         $ids = $request->get('id');
         $arr_ids = explode(",", $ids);
         $checkExist = $this->_userRole->whereIn('role_id', $arr_ids)->count();
-        if ($checkExist === 0){
+        if ($checkExist === 0) {
             $this->deleteModelTrait($this->_role, $ids);
             notify()->success(trans('roles.delete_successfully'));
             return redirect()->back();
         }
         notify()->error(trans('roles.exist_users'));
         return redirect()->back();
-
     }
 
     public function nameExist(Request $request)
@@ -169,13 +168,14 @@ class RolesController extends Controller
         $name = trim($request->get("name"));
         $id = trim($request->get("id"));
         $result = $this->checkExistRoleNameRepository->run($name, $id);
-        if($result){
+        if ($result) {
             return response()->json(false);
         };
         return response()->json(true);
     }
 
-    public function active(Request $request){
+    public function active(Request $request)
+    {
         $id = trim($request->get("id"));
         $role = $this->rolesRepository->getById($id);
         $is_visible = $role->is_visible == Constants::$is_visible['active'] ? Constants::$is_visible['deactive'] : Constants::$is_visible['active'];

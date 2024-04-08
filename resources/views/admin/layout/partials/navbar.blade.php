@@ -25,7 +25,7 @@
                     Quản lý Danh mục
                 </a>
                 <ul class="dropdown-menu bg-primary">
-                    <li><a class="nav-link dropdown-item text-white px-2" href="#">Quản lý Khóa học</a></li>
+                    <li><a class="nav-link dropdown-item text-white px-2" href="{{ route(\App\Models\Course::LIST) }}">Quản lý Khóa học</a></li>
                     <li><a class="nav-link dropdown-item text-white px-2" href="#">Danh mục Học Phần(Môn
                             học)</a></li>
                     <li><a class="nav-link dropdown-item text-white px-2" href="#">Danh mục Phòng học</a>
