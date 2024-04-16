@@ -2,13 +2,15 @@
 
 use App\Models\User;
 use App\Models\Roles;
+use App\Models\Category;
+use App\Models\LopHocPhan;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\AuthController;
 use App\Http\Controllers\Admin\HomeController;
 use App\Http\Controllers\Admin\RolesController;
 use App\Http\Controllers\Admin\UsersController;
 use App\Http\Controllers\Admin\CategoryController;
-use App\Models\Category;
+use App\Http\Controllers\Admin\LopHocPhanController;
 
 /*
 |--------------------------------------------------------------------------
@@ -85,4 +87,16 @@ Route::group(array('prefix' => '/admin', 'namespace' => 'Admin', 'middleware' =>
         // Route::post('/name-exist', [RolesController::class, 'nameExist'])->name('role-name-exist');
     });
 
+    /*--------------------------------------------------------------------*/
+    /* LopHocPhan
+    /*--------------------------------------------------------------------*/
+    Route::group(array('prefix' => '/lophocphan', 'namespace' => 'Admin'), function () {
+        Route::get('/', [LopHocPhanController::class, 'index'])->name(LopHocPhan::LIST)->middleware('can:' . LopHocPhan::LIST);
+        Route::get('/create', [LopHocPhanController::class, 'create'])->name(LopHocPhan::CREATE)->middleware('can:' . LopHocPhan::CREATE);
+        Route::post('/store', [LopHocPhanController::class, 'store'])->name('lophocphan.store');
+        Route::post('/name-exist', [LopHocPhanController::class, 'nameExist'])->name('lophocphan-name-exist');
+        Route::get('/edit/{id}', [LopHocPhanController::class, 'edit'])->name(LopHocPhan::UPDATE)->middleware('can:' . LopHocPhan::UPDATE);
+        Route::post('/update/{id}', [LopHocPhanController::class, 'update'])->name('lophocphan.update');
+        Route::post('/destroy', [LopHocPhanController::class, 'destroy'])->name(LopHocPhan::DELETE)->middleware('can:' . LopHocPhan::DELETE);
+    });
 });

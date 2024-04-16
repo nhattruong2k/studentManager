@@ -2,11 +2,12 @@
 
 namespace Database\Seeders;
 
-use App\Models\Category;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
-use Illuminate\Database\Seeder;
 use App\Models\User;
 use App\Models\Roles;
+use App\Models\Category;
+use App\Models\LopHocPhan;
+use Illuminate\Database\Seeder;
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 class PermissionTableSeeder extends Seeder
 {
@@ -96,6 +97,33 @@ class PermissionTableSeeder extends Seeder
                 'name' => 'Xóa',
                 'type' => 'categories',
                 'key_code' => Category::DELETE,
+            ],
+
+            // Lop Hoc Phan
+            [
+                'name' => 'Lớp học phần',
+                'type' => 'group',
+                'key_code' => 'lop_hoc_phans',
+            ],
+            [
+                'name' => 'Danh sách',
+                'type' => 'lop_hoc_phans',
+                'key_code' => LopHocPhan::LIST,
+            ],
+            [
+                'name' => 'Thêm mới',
+                'type' => 'lop_hoc_phans',
+                'key_code' => LopHocPhan::CREATE,
+            ],
+            [
+                'name' => 'Cập nhật',
+                'type' => 'lop_hoc_phans',
+                'key_code' => LopHocPhan::UPDATE,
+            ],
+            [
+                'name' => 'Xóa',
+                'type' => 'lop_hoc_phans',
+                'key_code' => LopHocPhan::DELETE,
             ],
         ];
         \DB::table('permissions')->insert($permissions);

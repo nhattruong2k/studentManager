@@ -4,7 +4,7 @@
             {!! Form::open(array('url' => "", 'class' => 'form-horizontal', 'id' => 'form_modal_delete')) !!}
             <div class="modal-header">
                 <h4 class="modal-title">{{ trans('common.notification') }}</h4>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
@@ -13,7 +13,7 @@
                 <p>{{trans('common.confirm_delete')}}</p>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-danger" id="close" data-dismiss="modal">{{trans('common.no')}}</button>
+                <button type="button" class="btn btn-danger"  data-bs-dismiss="modal">{{trans('common.no')}}</button>
                 <button type="submit" class="btn btn-primary">{{trans('common.yes')}}</button>
             </div>
             {!! Form::close() !!}

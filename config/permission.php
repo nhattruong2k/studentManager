@@ -3,6 +3,7 @@
 use App\Models\User;
 use App\Models\Roles;
 use App\Models\Category;
+use App\Models\LopHocPhan;
 
 return [
     'access' => [
@@ -23,6 +24,12 @@ return [
             'create' => Category::CREATE,
             'update' => Category::UPDATE,
             'delete' => Category::DELETE,
+        ],
+        'lop_hoc_phans' => [
+            'list' => LopHocPhan::LIST,
+            'create' => LopHocPhan::CREATE,
+            'update' => LopHocPhan::UPDATE,
+            'delete' => LopHocPhan::DELETE,
         ]
     ]
 ];

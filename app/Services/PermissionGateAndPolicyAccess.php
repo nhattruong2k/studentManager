@@ -2,14 +2,16 @@
 
 namespace App\Services;
 
-use App\Models\Category;
-use App\Models\User;
 use App\Models\Role;
+use App\Models\User;
 use App\Models\Roles;
-use Illuminate\Support\Facades\Gate;
+use App\Models\Category;
+use App\Models\LopHocPhan;
 use App\Policies\RolePolicy;
 use App\Policies\UserPolicy;
 use App\Policies\CategoryPolicy;
+use App\Policies\LopHocPhanPolicy;
+use Illuminate\Support\Facades\Gate;
 
 class PermissionGateAndPolicyAccess{
 
@@ -17,6 +19,7 @@ class PermissionGateAndPolicyAccess{
         $this->defineGateUser();
         $this->defineGateRole();
         $this->defineGateCateogry();
+        $this->defineLopHocPhan();
     }
 
     public function defineGateUser(){
@@ -38,5 +41,12 @@ class PermissionGateAndPolicyAccess{
         Gate::define(Category::CREATE, [CategoryPolicy::class, 'create']);
         Gate::define(Category::UPDATE, [CategoryPolicy::class, 'update']);
         Gate::define(Category::DELETE, [CategoryPolicy::class, 'delete']);
+    }
+
+    public function defineLopHocPhan(){
+        Gate::define(LopHocPhan::LIST, [LopHocPhanPolicy::class, 'view']);
+        Gate::define(LopHocPhan::CREATE, [LopHocPhanPolicy::class, 'create']);
+        Gate::define(LopHocPhan::UPDATE, [LopHocPhanPolicy::class, 'update']);
+        Gate::define(LopHocPhan::DELETE, [LopHocPhanPolicy::class, 'delete']);
     }
 }

@@ -24,6 +24,16 @@ class Constants
         'deactive' => 0,
     ];
 
+    public static $hinhthuchoc = [
+        'ly_thuyet' => 1,
+        'thuc_hanh' => 2,
+    ];
+    
+    public static $level = [
+        'caodang' => 1,
+        'daihoc' => 2,
+    ];
+    
     public static $image_default = 'default.jpg';
 
     public static $administrator = 'administrator';
