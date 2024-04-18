@@ -1,9 +1,9 @@
 <?php 
 
 return [
-    'list' => 'Danh sách lớp học phần',
-    'create' => 'Thêm mới lớp học phần',
-    'edit' => 'Sửa lớp học phần',
+    'list' => 'Danh sách học phần',
+    'create' => 'Thêm mới học phần',
+    'edit' => 'Sửa học phần',
     'ma_hp' => 'Tên mã học phần',
     'ten_hp' => 'Tên học phần',
     'tenviettat' => 'Tên viết tắt',
@@ -17,13 +17,14 @@ return [
     'hinhthuchoc' => 'Hình thức học',
     'academic_level' => 'Trình độ học vấn',
     'hinh_thuc_hoc' => 'Hình thức học vấn',
-    'update_successfully' => 'Cập nhật lớp học phần thành công',
-    'delete_successfully' => 'Xoá lớp học phần thành công',
+    'create_successfully' => 'Thêm học phần thành công',
+    'update_successfully' => 'Cập nhật học phần thành công',
+    'delete_successfully' => 'Xoá  học phần thành công',
     'validation' => [
-        'name_empty' => 'Tên lớp học phần không được để trống',
-        'name_min' => 'Tên lớp học phần phải có tối tiểu :amount kí tự',
-        'name_max' => 'Tên lớp học phần tối đa :amount kí tự',
-        'name_exist' => 'Tên lớp học phần đã tồn tại',
+        'name_empty' => 'Tên  học phần không được để trống',
+        'name_min' => 'Tên  học phần phải có tối tiểu :amount kí tự',
+        'name_max' => 'Tên  học phần tối đa :amount kí tự',
+        'name_exist' => 'Tên  học phần đã tồn tại',
         'level' => 'Vui lòng chọn trình độ học vấn',
         'hinhthuchoc'=>'Vui lòng chọn hình thức học vấn',
     ]

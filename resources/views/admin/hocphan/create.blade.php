@@ -5,7 +5,7 @@
     </script>
     <ol class="breadcrumb">
         <li><a href="{{route('admin-home')}}"><i class="fa fa-home"></i> {{trans('common.home')}}</a></li>
-        <li><a href="{{route(\App\Models\LopHocPhan::LIST)}}"> {{trans('lophocphan.list')}}</a></li>
+        <li><a href="{{route(\App\Models\HocPhan::LIST)}}"> {{trans('hocPhan.list')}}</a></li>
         <li>{{__('common.create')}}</li>
     </ol>
 @stop
@@ -15,9 +15,9 @@
             <h3 class="card-title">{{ $title }}</h3>
         </div>
         <div class="card-body">
-            <form method="POST" action="{{ route('lophocphan.store') }}" id="form-lophocphan">
+            <form method="POST" action="{{ route('hocphan.store') }}" id="form-hocPhan">
                 @csrf
-                @include('admin.lophocphan._form')
+                @include('admin.hocphan._form')
             </form>
         </div>
     </div>

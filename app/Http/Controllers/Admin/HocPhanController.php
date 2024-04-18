@@ -2,26 +2,26 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Models\LopHocPhan;
+use App\Models\HocPhan;
 use Illuminate\Http\Request;
 use App\Traits\DeleteModelTrait;
 use App\Http\Controllers\Controller;
-use App\Repositories\LopHocPhanRepository;
+use App\Repositories\HocPhanRepository;
 use Response;
-use App\Http\Requests\LopHocPhan\LopHocPhanRequest;
+use App\Http\Requests\HocPhan\HocPhanRequest;
 
-class LopHocPhanController extends Controller
+class HocPhanController extends Controller
 {
 
     use DeleteModelTrait;
 
-    protected $lophocphanRepository;
-    protected $_lopHocPhan;
+    protected $hocphanRepository;
+    protected $_hocPhan;
 
-    public function __construct(LopHocPhanRepository $lophocphanRepository, LopHocPhan $_lopHocPhan)
+    public function __construct(HocPhanRepository $hocphanRepository, HocPhan $_hocPhan)
     {
-        $this->lophocphanRepository = $lophocphanRepository;
-        $this->_lopHocPhan = $_lopHocPhan;
+        $this->hocphanRepository = $hocphanRepository;
+        $this->_hocPhan = $_hocPhan;
     }
 
     /**
@@ -50,10 +50,10 @@ class LopHocPhanController extends Controller
             $param['limit'] = $request->get('numpaging');
         }
 
-        $lophocphans = $this->lophocphanRepository->paginate($param);
-        $this->data['title'] = __('lophocphan.list');
-        $this->data['lophocphans'] = $lophocphans;
-        return view('admin.lophocphan.index')->with($this->data);
+        $hocphans = $this->hocphanRepository->paginate($param);
+        $this->data['title'] = __('hocphan.list');
+        $this->data['hocphans'] = $hocphans;
+        return view('admin.hocphan.index')->with($this->data);
     }
 
     /**
@@ -63,10 +63,10 @@ class LopHocPhanController extends Controller
      */
     public function create()
     {
-        $lophocphan = new LopHocPhan();
-        $this->data['lophocphan'] = $lophocphan;
-        $this->data['title'] = __('lophocphan.create');
-        return view('admin.lophocphan.create')->with($this->data);
+        $hocphan = new HocPhan();
+        $this->data['hocphan'] = $hocphan;
+        $this->data['title'] = __('hocphan.create');
+        return view('admin.hocphan.create')->with($this->data);
     }
 
     /**
@@ -75,19 +75,20 @@ class LopHocPhanController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(LopHocPhanRequest $request)
+    public function store(HocPhanRequest $request)
     {
-        $this->lophocphanRepository->create($request);
-        return redirect(route(LopHocPhan::LIST));
+        $this->hocphanRepository->create($request);
+        notify()->success(trans('hocPhan.create_successfully'));
+        return redirect(route(HocPhan::LIST));
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\LopHocPhan  $lopHocPhan
+     * @param  \App\Models\HocPhan  $HocPhan
      * @return \Illuminate\Http\Response
      */
-    public function show(LopHocPhan $lopHocPhan)
+    public function show()
     {
         //
     }
@@ -95,49 +96,49 @@ class LopHocPhanController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\LopHocPhan  $lopHocPhan
+     * @param  \App\Models\HocPhan  $HocPhan
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
-        $lophocphan = $this->lophocphanRepository->getById($id);
-        $this->data['lophocphan'] = $lophocphan;
-        $this->data['title'] = __('lophocphan.edit');
-        return view('admin.lophocphan.edit')->with($this->data);
+        $hocphan = $this->hocphanRepository->getById($id);
+        $this->data['hocphan'] = $hocphan;
+        $this->data['title'] = __('hocphan.edit');
+        return view('admin.hocphan.edit')->with($this->data);
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\LopHocPhan  $lopHocPhan
+     * @param  \App\Models\HocPhan  $hocPhan
      * @return \Illuminate\Http\Response
      */
-    public function update(LopHocPhanRequest $request, $id)
+    public function update(HocPhanRequest $request, $id)
     {
-        $this->lophocphanRepository->getById($id);
-        $this->lophocphanRepository->update($request, $id);
-        notify()->success(trans('lophocphan.update_successfully'));
-        return redirect(route(LopHocPhan::LIST));
+        $this->hocphanRepository->getById($id);
+        $this->hocphanRepository->update($request, $id);
+        notify()->success(trans('hocPhan.update_successfully'));
+        return redirect(route(HocPhan::LIST));
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\LopHocPhan  $lopHocPhan
+     * @param  \App\Models\HocPhan  $hocPhan
      * @return \Illuminate\Http\Response
      */
     public function destroy(Request $request)
     {
         $id = $request->get('id');
-        $this->deleteModelTrait($this->_lopHocPhan, $id);
-        notify()->success((trans('lophocphan.delete_successfully')));
+        $this->deleteModelTrait($this->_hocPhan, $id);
+        notify()->success((trans('hocPhan.delete_successfully')));
         return redirect()->back();
     }
 
     public function nameExist(Request $request)
     {
-        $result = $this->lophocphanRepository->nameExists($request);
+        $result = $this->hocphanRepository->nameExists($request);
         if ($result) {
             return response()->json(false);
         }

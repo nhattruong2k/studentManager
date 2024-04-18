@@ -6,21 +6,21 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class LopHocPhan extends Model
+class HocPhan extends Model
 {
     use HasFactory, SoftDeletes;
 
-    protected $table = "lop_hoc_phans";
+    protected $table = "hoc_phans";
 
      /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
-    const LIST = 'danh_sach_lop_hoc_phan';
-    const CREATE = 'them_lop_hoc_phan';
-    const UPDATE = 'cap_nhat_lop_hoc_phan';
-    const DELETE = 'xoa_lop_hoc_phan';
+    const LIST = 'danh_sach_hoc_phan';
+    const CREATE = 'them_hoc_phan';
+    const UPDATE = 'cap_nhat_hoc_phan';
+    const DELETE = 'xoa_hoc_phan';
  
      /**
      * The attributes that are mass assignable.

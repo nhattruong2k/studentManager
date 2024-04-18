@@ -19,9 +19,9 @@
             <div class="card-tools">
                 <div class="input-group input-group-sm">
                     <ul class="d-flex">
-                        <li><a href="{{ route(\App\Models\LopHocPhan::CREATE) }}" class="btn btn-primary mr-1"><i
+                        <li><a href="{{ route(\App\Models\HocPhan::CREATE) }}" class="btn btn-primary mr-1"><i
                                     class="fa fa-plus-square"></i> {{ __('common.create') }}</a></li>
-                        <li><a href="{{ route(\App\Models\LopHocPhan::LIST) }}" class="btn btn-default"><i
+                        <li><a href="{{ route(\App\Models\HocPhan::LIST) }}" class="btn btn-default"><i
                                     class="fa fa-refresh"></i> {{ __('common.reload') }}</a></li>
                     </ul>
                 </div>
@@ -32,7 +32,7 @@
                 <div class="input-group input-group-sm">
                     <div>
                         {!! Form::open([
-                            'url' => route(\App\Models\LopHocPhan::LIST),
+                            'url' => route(\App\Models\HocPhan::LIST),
                             'id' => 'form-search',
                             'method' => 'GET',
                             'class' => 'd-flex',
@@ -57,24 +57,24 @@
                 <thead>
                     <tr>
                         <th class="w_30">{{ __('common.stt') }}</th>
-                        <th class="text-center">{{ __('lophocphan.ma_hp') }}</th>
-                        <th class="text-center">{{ __('lophocphan.ten_hp') }}</th>
-                        <th class="text-center">{{ __('lophocphan.tinchi') }}</th>
+                        <th class="text-center">{{ __('hocPhan.ma_hp') }}</th>
+                        <th class="text-center">{{ __('hocPhan.ten_hp') }}</th>
+                        <th class="text-center">{{ __('hocPhan.tinchi') }}</th>
                         <th class="w_220 text-center">{{ __('common.action') }}</th>
                     </tr>
                 <tbody>
-                    @foreach ($lophocphans as $key => $lophocphan)
+                    @foreach ($hocphans as $key => $hocphan)
                         <tr>
                             <td class="text-center align-middle">{{ $key + 1 }}</td>
-                            <td class="text-center align-middle">{{ $lophocphan->Ma_hp }}</td>
-                            <td class="text-center align-middle">{{ $lophocphan->Ten_hp }}</td>
-                            <td class="text-center align-middle">{{ $lophocphan->So_tc }}</td>
+                            <td class="text-center align-middle">{{ $hocphan->Ma_hp }}</td>
+                            <td class="text-center align-middle">{{ $hocphan->Ten_hp }}</td>
+                            <td class="text-center align-middle">{{ $hocphan->So_tc }}</td>
 
                             <td class="action text-center align-middle">
-                                <a href="{{ route(\App\Models\LopHocPhan::UPDATE, $lophocphan->id) }}"
+                                <a href="{{ route(\App\Models\HocPhan::UPDATE, $hocphan->id) }}"
                                     class="btn btn-primary" title="{{ trans('common.edit') }}"><i
                                         class="fa fa-edit"></i></a>
-                                <a href="javascript:;" onclick="deleteModal('{{ $lophocphan->id }}', 'lophocphan/destroy')"
+                                <a href="javascript:;" onclick="deleteModal('{{ $hocphan->id }}', 'hocphan/destroy')"
                                     title="{{ trans('common.delete') }}" class="btn btn-danger"><i
                                         class="fa fa-trash-o"></i></a>
                             </td>
@@ -91,11 +91,11 @@
                             'id' => 'selectNumpaging',
                         ]) !!}
                     </div>
-                    <span class="total-record ml-2 mt-2">{!! __('common.total_data', ['total' => $lophocphans->total()]) !!}</span>
+                    <span class="total-record ml-2 mt-2">{!! __('common.total_data', ['total' => $hocphans->total()]) !!}</span>
                 </div>
                 <div class="col-sm-6">
                     <div class="pull-right">
-                        {{ $lophocphans->links('vendor/pagination/bootstrap-4') }}
+                        {{ $hocphans->links('vendor/pagination/bootstrap-4') }}
                     </div>
 
                 </div>
@@ -105,20 +105,4 @@
 @endsection
 @section('script')
     @include("admin.layout.partials.numpaging")
-    {{-- <script type="text/javascript">
-        $(document).ready(function () {
-            $(".is_visible").click(function (e) {
-                let is_visible = $(this).data('visible');
-                let id = $(this).data('id');
-                $.ajax({
-                    url: '{{ route('roles-active') }}',
-                    type: 'POST',
-                    data: {id: id, is_visible: is_visible},
-                    success: function (data, success) {
-                        showNotificationActive(data.message);
-                    }
-                });
-            })
-        });
-    </script> --}}
 @endsection
