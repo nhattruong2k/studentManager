@@ -68,7 +68,7 @@
     <div class="row">
         <div class="col-md-12">
             <div class="form-group">
-                <button type="submit" class="btn btn-info"><i class="fa fa-save"></i>   {{ !$role->id ? __('common.create') : __('common.update') }}</button>
+                <button type="submit" class="btn btn-info" id="btn_save"><i class="fa fa-save"></i>   {{ !$role->id ? __('common.create') : __('common.update') }}</button>
                     <a href="{{ route(\App\Models\Roles::LIST) }}" class="btn btn-default"><i class="fa fa-reply"></i> {{__('common.cancel')}}</a>
             </div>
         </div>
@@ -123,7 +123,7 @@
                     minlength: 4,
                     maxlength: 50,
                     remote: {
-                        type: 'post',
+                        type: 'POST',
                         url: '{{ route('role-name-exist') }}',
                         headers: {
                             "Accept": "application/json",
@@ -137,7 +137,7 @@
                             'id': function() {
                                 return '{{ $role->id }}';
                             }
-                        }
+                        },
                     },
                 },
             },

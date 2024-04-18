@@ -2,6 +2,7 @@
 
 use App\Models\User;
 use App\Models\Roles;
+use App\Models\HocPhan;
 use App\Models\Category;
 
 return [
@@ -23,6 +24,12 @@ return [
             'create' => Category::CREATE,
             'update' => Category::UPDATE,
             'delete' => Category::DELETE,
+        ],
+        'hoc_phans' => [
+            'list' => HocPhan::LIST,
+            'create' => HocPhan::CREATE,
+            'update' => HocPhan::UPDATE,
+            'delete' => HocPhan::DELETE,
         ]
     ]
 ];

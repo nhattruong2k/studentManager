@@ -68,7 +68,6 @@
             <div class="col-12 col-sm-2 border border-secondary border-1 my-1 border-shadow " style="background-color: #e7e0e0;">
                 @include('admin.layout.partials.sidebar_left')
             </div>
-
             <div class="col-12 col-sm-10 my-1">
                 <section class="mh-100vh container-fluid mt-2">
                     @yield('contents')
@@ -76,57 +75,13 @@
             </div>
         </div>
     </div>
-    {{-- <div class="wrapper">
-        <!-- Navbar -->
-        <nav class="main-header navbar navbar-expand navbar-white navbar-light">
-            @include('admin.layout.partials.header')
-        </nav>
-        <!-- /.navbar -->
-
-        <!-- Main Sidebar Container -->
-        <aside class="main-sidebar sidebar-dark-primary elevation-4">
-            @include('admin.layout.partials.sidebar_left')
-        </aside>
-
-        <!-- Content Wrapper. Contains page content -->
-        <div class="content-wrapper">
-            <section class="content-header">
-                @yield('breadcrumb')
-                <div class="row">
-                    <div class="col-xs-12">
-                        <div id="flash_message">
-                            @if (Session::has('message'))
-                                <div class="alert {{ Session::get('alert-class', 'alert-info') }} alert-dismissable">
-                                    <button data-dismiss="alert" class="close" type="button">
-                                        <i class="ace-icon fa fa-times"></i>
-                                    </button>
-                                    {{ Session::get('message') }}
-                                </div>
-                            @endif
-                        </div>
-                    </div>
-                </div>
-            </section>
-            <section class="mh-100vh container-fluid mt-2">
-                @yield('contents')
-            </section>
-        </div>
-        <!-- /.content-wrapper -->
-        <footer class="main-footer">
-            @include('admin.layout.partials.footer')
-            @include('admin.layout.partials.deleteModal')
-        </footer>
-        <!-- Footer End -->
-
-        <!-- Control Sidebar -->
-        <aside class="control-sidebar control-sidebar-dark">
-            <!-- Control sidebar content goes here -->
-        </aside>
-        <!-- /.control-sidebar -->
-    </div> --}}
+    <div class="wrapper">
+        @include('admin.layout.partials.deleteModal')
+    </div>
     <x-notify::notify />
     <!-- ./wrapper -->
     @notifyJs
+    
     <script src="{{ asset('admin/plugins/jquery/jquery.min.js') }}"></script>
     <!-- jQuery UI 1.11.4 -->
 

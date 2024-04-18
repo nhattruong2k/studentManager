@@ -31,7 +31,7 @@
 
                 </div>
             @endif
-            @if (auth()->user()->can(\App\Models\Category::LIST))
+            @if (auth()->user()->can(\App\Models\HocPhan::LIST))
                 <div class="btn-group">
                     <a class="dropdown-toggle nav-link text-white" data-bs-toggle="dropdown" data-bs-display="static"
                         aria-expanded="false" href="#">
@@ -39,8 +39,13 @@
                     </a>
                     <ul class="dropdown-menu bg-primary">
                         <li><a class="nav-link dropdown-item text-white px-2" href="#">Quản lý Khóa học</a></li>
-                        <li><a class="nav-link dropdown-item text-white px-2" href="#">Danh mục Học Phần(Môn
-                                học)</a></li>
+                        @can(\App\Models\HocPhan::LIST)
+                            <li><a class="nav-link dropdown-item text-white px-2"
+                                    href="{{ route(\App\Models\HocPhan::LIST) }}">
+                                    Danh mục Học Phần(Môn học)
+                                </a>
+                            </li>
+                        @endcan
                         <li><a class="nav-link dropdown-item text-white px-2" href="#">Danh mục Phòng học</a>
                         </li>
                     </ul>

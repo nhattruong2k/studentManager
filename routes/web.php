@@ -2,13 +2,15 @@
 
 use App\Models\User;
 use App\Models\Roles;
+use App\Models\HocPhan;
+use App\Models\Category;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\AuthController;
 use App\Http\Controllers\Admin\HomeController;
 use App\Http\Controllers\Admin\RolesController;
 use App\Http\Controllers\Admin\UsersController;
+use App\Http\Controllers\Admin\HocPhanController;
 use App\Http\Controllers\Admin\CategoryController;
-use App\Models\Category;
 
 /*
 |--------------------------------------------------------------------------
@@ -85,4 +87,16 @@ Route::group(array('prefix' => '/admin', 'namespace' => 'Admin', 'middleware' =>
         // Route::post('/name-exist', [RolesController::class, 'nameExist'])->name('role-name-exist');
     });
 
+    /*--------------------------------------------------------------------*/
+    /* HocPhan
+    /*--------------------------------------------------------------------*/
+    Route::group(array('prefix' => '/hocphan', 'namespace' => 'Admin'), function () {
+        Route::get('/', [HocPhanController::class, 'index'])->name(HocPhan::LIST)->middleware('can:' . HocPhan::LIST);
+        Route::get('/create', [HocPhanController::class, 'create'])->name(HocPhan::CREATE)->middleware('can:' . HocPhan::CREATE);
+        Route::post('/store', [HocPhanController::class, 'store'])->name('hocphan.store');
+        Route::post('/name-exist', [HocPhanController::class, 'nameExist'])->name('hocphan-name-exist');
+        Route::get('/edit/{id}', [HocPhanController::class, 'edit'])->name(HocPhan::UPDATE)->middleware('can:' . HocPhan::UPDATE);
+        Route::post('/update/{id}', [HocPhanController::class, 'update'])->name('hocphan.update');
+        Route::post('/destroy', [HocPhanController::class, 'destroy'])->name(HocPhan::DELETE)->middleware('can:' . HocPhan::DELETE);
+    });
 });
